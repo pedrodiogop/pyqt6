@@ -6,6 +6,8 @@ from layout_colorwidget import Color
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        #Confguraçõs da Janela 
         self.setWindowTitle("My App")
         self.setMinimumSize(QSize(800, 600))  # Set a fixed size for the window
         #self.setMaximumSize(QSize(800, 900))  # Set a fixed size for the window

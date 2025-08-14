@@ -1,3 +1,5 @@
+
+
 var map = L.map('map').setView([39.5, -8.0], 6);
 var popup = L.popup();
 
@@ -27,19 +29,18 @@ var polygon = L.polygon([
 polygon.bindPopup("Restrições Cabos no Fundo do Mar ");
 
 
-// function onMapClick(e) {
-//     alert("You clicked the map at " + e.latlng);
-// }
-
 function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
+    alert("You clicked the map at " + e.latlng);
 }
 
+map.on('click', function(e) {
+    if (bridge) bridge.sendCoordinates(e.latlng.lat, e.latlng.lng);
+    L.popup()
+     .setLatLng(e.latlng)
+     .setContent(`Coordenadas: ${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}`)
+     .openOn(map);
+});
 
-map.on('click', onMapClick);
 
 
 var LeafIcon = L.Icon.extend({
@@ -75,5 +76,3 @@ const ponto = L.latLng(38.7169, -9.1390, 100); // latitude, longitude, altitude 
 L.marker(ponto).addTo(map)
     .bindPopup(`Estamos em Lisboa!<br>Altitude: ${ponto.alt} m`)
     .openPopup();
-
-console.log(ponto); // {lat: 38.7169, lng: -9.139, alt: 100}
