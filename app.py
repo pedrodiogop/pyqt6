@@ -1,19 +1,20 @@
 import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QVBoxLayout, QLabel
-
+from layout_colorwidget import Color
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("My First App")
-        self.setMinimumSize(QSize(400, 300))  # Set a fixed size for the window
-        self.setMaximumSize(QSize(800, 600))  # Set a fixed size for the window
+        self.setWindowTitle("My App")
+        self.setMinimumSize(QSize(800, 600))  # Set a fixed size for the window
+        #self.setMaximumSize(QSize(800, 900))  # Set a fixed size for the window
         
         layout = QVBoxLayout()
         self.label = QLabel("<h1> Hello, Diana </h1>")
         self.button = QPushButton("Clica em mim!")
-        
+
+        widget = Color("red")
         
         self.button.setMinimumSize(QSize(200, 100))  # Set a fixed size for the window
         self.button.setMaximumSize(QSize(400, 300))  # Set a fixed size for the window
@@ -22,6 +23,7 @@ class MainWindow(QMainWindow):
 
         layout.addWidget(self.label)
         layout.addWidget(self.button)
+        layout.addWidget(widget)    
 
         window = QWidget()
         window.setLayout(layout)
